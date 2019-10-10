@@ -49,6 +49,7 @@ limitations under the License.
 #include "tensorflow/c/c_api.h"
 #include "tensorflow/core/lib/core/status.h"
 #include "tensorflow/core/platform/init_main.h"
+#include "tensorflow/core/platform/load_library.h"
 #include "tensorflow/core/util/command_line_flags.h"
 #include "tensorflow_serving/model_servers/server.h"
 #include "tensorflow_serving/model_servers/version.h"
@@ -170,7 +171,9 @@ int main(int argc, char** argv) {
       tensorflow::Flag(
           "monitoring_config_file", &options.monitoring_config_file,
           "If non-empty, read an ascii MonitoringConfig protobuf from "
-          "the supplied file name")};
+          "the supplied file name"),
+      tensorflow::Flag("librarypth", &options.librarypath, "Load additional operators from given user_op library")
+    };
 
   const auto& usage = tensorflow::Flags::Usage(argv[0], flag_list);
   if (!tensorflow::Flags::Parse(&argc, argv, flag_list)) {
@@ -187,6 +190,20 @@ int main(int argc, char** argv) {
   tensorflow::port::InitMain(argv[0], &argc, &argv);
   if (argc != 1) {
     std::cout << "unknown argument: " << argv[1] << "\n" << usage;
+  }
+
+  if (options.librarypath.size() > 0) {
+    std::cout << "Loading custom op: " << options.librarypath << ";";
+    TF_Status* status = TF_NewStatus();
+    // Load the library.
+      TF_LoadLibrary(options.librarypath.c_str(), status);
+      if (!TF_GetCode(status) == TF_OK) {
+        string status_msg(TF_Message(status));
+        std::cout << "Problem loading user_op library " <<  options.librarypath << ": " <<
+            TF_Message(status);
+        return -1;
+    }
+    TF_DeleteStatus(status);
   }
 
   tensorflow::serving::main::Server server;

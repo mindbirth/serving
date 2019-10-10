@@ -78,6 +78,9 @@ class Server {
     // Tensorflow session run options.
     bool enforce_session_run_timeout = true;
 
+    // Path to load the custom ops from
+    tensorflow::string librarypath;
+
     Options();
   };
 

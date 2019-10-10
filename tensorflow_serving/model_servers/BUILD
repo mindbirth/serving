@@ -358,6 +358,7 @@ cc_library(
         ":tensorflow_model_server_custom_op_clients",
         "//tensorflow_serving:internal",
     ],
+    linkopts = ["-rdynamic"],
     deps = [
         ":server_lib",
         "@org_tensorflow//tensorflow/c:c_api",
