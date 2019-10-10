@@ -74,6 +74,9 @@ class Server {
     bool enable_model_warmup = true;
     tensorflow::string monitoring_config_file;
 
+    // Path to load the custom ops from
+    tensorflow::string librarypath;
+
     Options();
   };
 
