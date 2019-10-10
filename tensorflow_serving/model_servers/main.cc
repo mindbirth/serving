@@ -198,7 +198,9 @@ int main(int argc, char** argv) {
     // Load the library.
       TF_LoadLibrary(options.librarypath.c_str(), status);
       if (!TF_GetCode(status) == TF_OK) {
-        std::cout << "Problem loading user_op library " <<  options.librarypath << ": " << TF_Message(status_msg(TF_Message(status)));
+        std::string status_msg(TF_Message(status));
+        std::cout << "Problem loading user_op library " <<  options.librarypath << ": " <<
+            TF_Message(status);
         return -1;
     }
     TF_DeleteStatus(status);
