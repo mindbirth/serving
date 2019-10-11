@@ -316,13 +316,6 @@ TENSORFLOW_DEPS = [
 ]
 
 cc_library(
-    name = "sentencepiece_processor_lib",
-    srcs = ["sentencepiece_processor_ops-1.14.0.so"],
-    hdrs = ["sentencepiece_processor.h"],
-    visibility = ["//visibility:public"],
-)
-
-cc_library(
     name = "server_lib",
     srcs = [
         "server.cc",

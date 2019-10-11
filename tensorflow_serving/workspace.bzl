@@ -48,3 +48,16 @@ def tf_serving_workspace():
         strip_prefix = "libevent-release-2.1.8-stable",
         build_file = "@//third_party/libevent:BUILD",
     )
+
+    native.new_local_repository(
+    	name = "sentencepiece_libs",
+        # pkg-config --variable=libdir sentencepiece_processor_lib
+    	path = "/usr/local/lib/",
+    	build_file_content = """
+    native.cc_library(
+    	name = "sentencepiece_processor_lib",
+    	srcs = ["sentencepiece_processor_ops-1.14.0.so"],
+    	visibility = ["//visibility:public"],
+    )
+    """,
+    )
