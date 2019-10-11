@@ -314,10 +314,6 @@ TENSORFLOW_DEPS = [
     "//tensorflow_serving/servables/tensorflow:session_bundle_source_adapter",
     "//tensorflow_serving/servables/tensorflow:predict_impl",
 ]
-new_local_repository(
-    name = "sentencepiece_repo",
-    path = "/tensorflow_serving/model_servers/"
-)
 
 cc_library(
     name = "sentencepiece_processor_lib",
