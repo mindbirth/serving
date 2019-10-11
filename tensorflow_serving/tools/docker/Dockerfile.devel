@@ -13,8 +13,6 @@
 # limitations under the License.
 FROM ubuntu:18.04 as base_build
 
-COPY tensorflow_serving/model_servers/sentencepiece_processor_ops-1.14.0.so /usr/share/lib
-
 ARG TF_SERVING_VERSION_GIT_BRANCH=alternative-r1.14
 ARG TF_SERVING_VERSION_GIT_COMMIT=head
 
@@ -88,6 +86,7 @@ RUN echo "Building with build options: ${TF_SERVING_BUILD_OPTIONS}"
 ARG TF_SERVING_BAZEL_OPTIONS=""
 RUN echo "Building with Bazel options: ${TF_SERVING_BAZEL_OPTIONS}"
 
+COPY tensorflow_serving/model_servers/sentencepiece_processor_ops-1.14.0.so /usr/local/lib/
 RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 RUN echo $LD_LIBRARY_PATH
 RUN ls $LD_LIBRARY_PATH
