@@ -54,9 +54,9 @@ def tf_serving_workspace():
         # pkg-config --variable=libdir sentencepiece_processor_lib
     	path = "/usr/local/lib/",
     	build_file_content = """
-    native.cc_library(
+    cc_library(
     	name = "sentencepiece_processor_lib",
-    	srcs = ["sentencepiece_processor_ops-1.14.0.so"],
+    	srcs = ["@sentencepiece_libs//:sentencepiece_processor_ops-1.14.0.so"],
     	visibility = ["//visibility:public"],
     )
     """,
