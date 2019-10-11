@@ -342,7 +342,7 @@ cc_library(
         "//tensorflow_serving/config:ssl_config_proto",
         "//tensorflow_serving/core:availability_preserving_policy",
         "//tensorflow_serving/servables/tensorflow:session_bundle_config_proto",
-        ":sentencepiece_processor_lib",
+        "@sentencepiece_libs:sentencepiece_processor_lib",
     ] + TENSORFLOW_DEPS + SUPPORTED_TENSORFLOW_OPS,
 )
 
