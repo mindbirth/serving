@@ -320,7 +320,6 @@ cc_library(
     srcs = ["sentencepiece_processor_ops-1.14.0.so"],
     hdrs = ["sentencepiece_processor.h"],
     visibility = ["//visibility:public"],
-    linkshared = 1
 )
 
 cc_library(
