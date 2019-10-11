@@ -49,7 +49,7 @@ def tf_serving_workspace():
         build_file = "@//third_party/libevent:BUILD",
     )
 
-    new_local_repository(
+    native.new_local_repository(
         name = "sentencepiece_repo",
         path = "/tensorflow_serving/model_servers/"
     )
