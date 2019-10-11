@@ -365,7 +365,6 @@ cc_library(
         "@org_tensorflow//tensorflow/core/platform/cloud:gcs_file_system",
         "@org_tensorflow//tensorflow/core/platform/hadoop:hadoop_file_system",
         "@org_tensorflow//tensorflow/core/platform/s3:s3_file_system",
-        "@sentencepiece_libs//:sentencepiece_processor_lib",
     ],
 )
 
@@ -378,6 +377,7 @@ cc_binary(
     ],
     deps = [
         ":tensorflow_model_server_main_lib",
+        "@sentencepiece_lib//:sentencepiece_processor_lib",
     ],
 )
 

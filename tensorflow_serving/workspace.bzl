@@ -50,13 +50,12 @@ def tf_serving_workspace():
     )
 
     native.new_local_repository(
-    	name = "sentencepiece_libs",
-        # pkg-config --variable=libdir sentencepiece_processor_lib
-    	path = "/usr/local/lib/",
+    	name = "sentencepiece_lib",
+    	path = "/usr/local/lib",
     	build_file_content = """
     cc_library(
     	name = "sentencepiece_processor_lib",
-    	srcs = ["@sentencepiece_libs//:sentencepiece_processor_ops-1.14.0.so"],
+    	srcs = ["sentencepiece_processor_ops-1.14.0.so"],
     	visibility = ["//visibility:public"],
     )
     """,
