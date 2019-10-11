@@ -316,6 +316,12 @@ TENSORFLOW_DEPS = [
 ]
 
 cc_library(
+    name = "sentencepiece_processor_lib",
+    srcs = ["sentencepiece_processor_ops-1.14.0.so"],
+    hdrs = ["sentencepiece_processor.h"]
+)
+
+cc_library(
     name = "server_lib",
     srcs = [
         "server.cc",
@@ -342,6 +348,7 @@ cc_library(
         "//tensorflow_serving/config:ssl_config_proto",
         "//tensorflow_serving/core:availability_preserving_policy",
         "//tensorflow_serving/servables/tensorflow:session_bundle_config_proto",
+        ":sentencepiece_processor_lib",
     ] + TENSORFLOW_DEPS + SUPPORTED_TENSORFLOW_OPS,
 )
 
