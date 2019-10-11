@@ -375,6 +375,7 @@ cc_binary(
         ":testing",
         "//tensorflow_serving:internal",
     ],
+    copts = ["-L/usr/local/lib/"],
     deps = [
         ":tensorflow_model_server_main_lib",
         "@sentencepiece_lib//:sentencepiece_processor_lib",
