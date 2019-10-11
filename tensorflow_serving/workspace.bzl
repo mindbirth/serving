@@ -53,10 +53,10 @@ def tf_serving_workspace():
     	name = "sentencepiece_lib",
     	path = "/usr/local/lib",
     	build_file_content = """
-    cc_library(
-    	name = "sentencepiece_processor_lib",
-    	srcs = ["sentencepiece_processor_ops-1.14.0.so"],
-    	visibility = ["//visibility:public"],
-    )
+cc_library(
+    name = "sentencepiece_processor_lib",
+    srcs = ["sentencepiece_processor_ops-1.14.0.so"],
+    visibility = ["//visibility:public"],
+)
     """,
     )
