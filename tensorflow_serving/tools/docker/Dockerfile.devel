@@ -86,9 +86,9 @@ RUN echo "Building with build options: ${TF_SERVING_BUILD_OPTIONS}"
 ARG TF_SERVING_BAZEL_OPTIONS=""
 RUN echo "Building with Bazel options: ${TF_SERVING_BAZEL_OPTIONS}"
 
-#COPY tensorflow_serving/model_servers/sentencepiece_processor_ops-1.14.0.so /usr/local/lib/
-#RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
-#RUN ls /usr/local/lib
+COPY tensorflow_serving/model_servers/sentencepiece_processor_ops-1.14.0.so /usr/local/lib/
+RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+RUN ls /usr/local/lib
 
 RUN bazel build --color=yes --curses=yes \
     ${TF_SERVING_BAZEL_OPTIONS} \
