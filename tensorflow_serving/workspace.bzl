@@ -49,13 +49,19 @@ def tf_serving_workspace():
         build_file = "@//third_party/libevent:BUILD",
     )
 
+#cc_library(
+#    name = "sentencepiece_processor_lib",
+#    srcs = ["sentencepiece_processor_ops-1.14.0.so"],
+#    visibility = ["//visibility:public"],
+#)
+
     native.new_local_repository(
     	name = "sentencepiece_lib",
     	path = "/usr/local/lib",
     	build_file_content = """
-cc_library(
+cc_import(
     name = "sentencepiece_processor_lib",
-    srcs = ["sentencepiece_processor_ops-1.14.0.so"],
+    shared_library = ["sentencepiece_processor_ops-1.14.0.so"],
     visibility = ["//visibility:public"],
 )
     """,
