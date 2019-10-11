@@ -87,7 +87,8 @@ ARG TF_SERVING_BAZEL_OPTIONS=""
 RUN echo "Building with Bazel options: ${TF_SERVING_BAZEL_OPTIONS}"
 
 COPY sentencepiece_processor_ops-1.14.0.so /usr/share/lib
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+RUN echo $LD_LIBRARY_PATH
 
 RUN bazel build --color=yes --curses=yes \
     ${TF_SERVING_BAZEL_OPTIONS} \
