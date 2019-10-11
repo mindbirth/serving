@@ -48,8 +48,3 @@ def tf_serving_workspace():
         strip_prefix = "libevent-release-2.1.8-stable",
         build_file = "@//third_party/libevent:BUILD",
     )
-
-    native.new_local_repository(
-        name = "sentencepiece_repo",
-        path = "/tensorflow_serving/model_servers/"
-    )
