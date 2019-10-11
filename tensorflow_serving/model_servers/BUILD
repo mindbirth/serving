@@ -317,8 +317,8 @@ TENSORFLOW_DEPS = [
 
 cc_library(
     name = "sentencepiece_processor_lib",
-    srcs = ["./tensorflow_serving/model_servers/sentencepiece_processor_ops-1.14.0.so"],
-    hdrs = ["./tensorflow_serving/model_servers/sentencepiece_processor.h"],
+    srcs = ["/tensorflow_serving/model_servers/sentencepiece_processor_ops-1.14.0.so"],
+    hdrs = ["/tensorflow_serving/model_servers/sentencepiece_processor.h"],
     visibility = ["//visibility:public"],
 )
 
