@@ -61,7 +61,7 @@ def tf_serving_workspace():
     	build_file_content = """
 cc_import(
     name = "sentencepiece_processor_lib",
-    shared_library = ["sentencepiece_processor_ops-1.14.0.so"],
+    shared_library = "sentencepiece_processor_ops-1.14.0.so",
     visibility = ["//visibility:public"],
 )
     """,
