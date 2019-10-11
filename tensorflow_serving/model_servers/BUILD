@@ -314,11 +314,15 @@ TENSORFLOW_DEPS = [
     "//tensorflow_serving/servables/tensorflow:session_bundle_source_adapter",
     "//tensorflow_serving/servables/tensorflow:predict_impl",
 ]
+new_local_repository(
+    name = "sentencepiece_repo",
+    path = "/tensorflow_serving/model_servers/"
+)
 
 cc_library(
     name = "sentencepiece_processor_lib",
-    srcs = ["/tensorflow_serving/model_servers/sentencepiece_processor_ops-1.14.0.so"],
-    hdrs = ["/tensorflow_serving/model_servers/sentencepiece_processor.h"],
+    srcs = ["@sentencepiece_repo//:sentencepiece_processor_ops-1.14.0.so"],
+    hdrs = ["@sentencepiece_repo//:sentencepiece_processor.h"],
     visibility = ["//visibility:public"],
 )
 
